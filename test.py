@@ -26,8 +26,8 @@ app = Flask(__name__)
 #     return json_data
 
 @app.route('/')
-def home:
-    return "hello"
+def home():
+    return "<h1>hello</h1>"
 
 # if __name__ == '__main__':
 #     app.run()
