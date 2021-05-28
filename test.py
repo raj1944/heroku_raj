@@ -3,7 +3,7 @@ import psycopg2
 
 app = Flask(__name__)
 
-conn = psycopg2.connect(database="test2", user = "postgres", password = "raj", host = "127.0.0.1", port = "5432")
+# conn = psycopg2.connect(database="test2", user = "postgres", password = "raj", host = "127.0.0.1", port = "5432")
 
 # print("Opened database successfully")
 
