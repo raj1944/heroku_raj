@@ -29,5 +29,5 @@ app = Flask(__name__)
 def home():
     return "<h1>hello</h1>"
 
-# if __name__ == '__main__':
-#     app.run()
+if __name__ == '__main__':
+    app.run()
