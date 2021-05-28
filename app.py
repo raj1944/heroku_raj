@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_test():
-    return "<h1>hello</h1>"
+    return {}
 
 if __name__ == '__main__':
     app.run()
