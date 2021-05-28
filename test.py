@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import psycopg2
 
 app = Flask(__name__)
@@ -11,15 +11,18 @@ cur = conn.cursor()
 
 @app.route('/api/branches/autocomplete')
 def hello():
-    cur.execute("SELECT * from banks where id <=10")
+    args = request.args
+    print(args['q'])
+    query = 'SELECT * from branches' 
+    print(query)  
+    cur.execute(query)
     rows = cur.fetchall()
     json_data = {}
     json_data['banks'] = []
     for x in rows:
-        data = {}
-        data['name'] = x[0]
-        data['id'] = x[1]
-        json_data['banks'].append(data)
+        print(x)
+        json_data['banks'].append(list(x))
+    print(json_data)
     return json_data
 
 
