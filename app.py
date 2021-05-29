@@ -9,8 +9,9 @@ app = Flask(__name__)
 
 # cur = conn.cursor()
 
-# @app.route('/api/branches/autocomplete')
-# def hello():
+@app.route('/api/branches/autocomplete')
+def hello():
+    return "Raj"
 #     args = request.args
 #     print(args['q'])
 #     query = 'SELECT * from branches' 
@@ -25,9 +26,9 @@ app = Flask(__name__)
 #     print(json_data)
 #     return json_data
 
-@app.route('/')
-def home_test():
-    return {}
+# @app.route('/')
+# def home_test():
+#     return "<h1>hello</h1>"
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()
