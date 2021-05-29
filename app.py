@@ -11,7 +11,6 @@ app = Flask(__name__)
 
 @app.route('/api/branches/autocomplete')
 def hello():
-    return "Raj"
 #     args = request.args
 #     print(args['q'])
 #     query = 'SELECT * from branches' 
