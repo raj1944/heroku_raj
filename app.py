@@ -20,10 +20,15 @@ def hello():
     return "RAJ"
 
 @app.route('/api/branches/autocomplete')
-def autocomplete(limit = 5, offset = 0):
+def autocomplete():
     args = request.args
+
+    q = args.get('q', default="")
+    limit = args.get('limit', default=5)
+    offset = args.get('offset', default=0)
+
     query = "SELECT * from branches WHERE branch LIKE %s order by ifsc limit %s offset %s"
-    parem = ("%%" + args.get('q', default="") + "%%", args.get('limit', default=5), args.get('offset', default=0))
+    parem = ("%%" + q + "%%", limit, offset)
     rows = connection.execute(query, parem)
     
     json_data = {}
@@ -35,6 +40,10 @@ def autocomplete(limit = 5, offset = 0):
             temp_data[header[i]] = x[i]
         json_data['banks'].append(temp_data) 
 
+    query = "SELECT COUNT(*) from branches WHERE branch LIKE %s"
+    rows = connection.execute(query, ("%%" + q + "%%"))
+    for x in rows:
+        json_data['page_count'] = (x[0] + limit - 1) // limit   
     return json_data
 
 @app.route('/api/branches')
